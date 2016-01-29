@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan xmlns="urn:infinispan:config:8.0">
+
+    <cache-container default-cache="default">
+        <local-cache name="mycache" statistics="true">
+            <eviction max-entries="2" strategy="LRU"/>
+            <expiration max-idle="600000"/>
+            <persistence>
+                <store class="com.example.infinispan.MongoCacheStore">
+                    <property name="database">example</property>
+                    <property name="collection">infinispan</property>
+                </store>
+            </persistence>
+        </local-cache>
+    </cache-container>
+
+</infinispan>
